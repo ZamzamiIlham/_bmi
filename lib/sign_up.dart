@@ -7,11 +7,8 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,10 +20,20 @@ class _SignupPageState extends State<SignupPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'Halaman Sign',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
             TextField(
-              controller: _emailController,
+              controller: _usernameController,
               decoration: InputDecoration(
-                labelText: 'Email',
+                labelText: 'Username',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -39,39 +46,15 @@ class _SignupPageState extends State<SignupPage> {
               ),
             ),
             SizedBox(height: 16.0),
-            TextField(
-              controller: _confirmPasswordController,
-              decoration: InputDecoration(
-                labelText: 'Confirm Password',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                if (_emailController.text.isEmpty ||
-                    _passwordController.text.isEmpty ||
-                    _confirmPasswordController.text.isEmpty) {
+                if (_usernameController.text.isEmpty ||
+                    _passwordController.text.isEmpty) {
                   showDialog(
                     context: context,
                     builder: (context) => AlertDialog(
                       title: Text('Error'),
-                      content: Text('Please fill in all fields'),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: Text('OK'),
-                        ),
-                      ],
-                    ),
-                  );
-                } else if (_passwordController.text !=
-                    _confirmPasswordController.text) {
-                  showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: Text('Error'),
-                      content: Text('Passwords do not match'),
+                      content: Text('Data tidak boleh kosong'),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -85,7 +68,7 @@ class _SignupPageState extends State<SignupPage> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => LoginPage(
-                        email: _emailController.text,
+                        username: _usernameController.text,
                         password: _passwordController.text,
                       ),
                     ),

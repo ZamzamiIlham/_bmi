@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 
 class BMICalculator extends StatefulWidget {
-  /*BMICalculator({required this.email, required this.password});
-  String email;
-  String password;*/
-
-  final String email;
+  final String username;
   final String password;
 
-  BMICalculator({required this.email, required this.password});
+  BMICalculator({required this.username, required this.password});
 
   @override
   _BMICalculatorState createState() => _BMICalculatorState();
 }
 
 class _BMICalculatorState extends State<BMICalculator> {
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _heightController = TextEditingController();
   final TextEditingController _weightController = TextEditingController();
@@ -29,13 +25,11 @@ class _BMICalculatorState extends State<BMICalculator> {
     setState(() {
       _bmiResult = bmi;
       if (_bmiResult < 18.5) {
-        _bmiCategory = 'Underweight';
+        _bmiCategory = 'Kurus';
       } else if (_bmiResult >= 18.5 && _bmiResult < 25) {
-        _bmiCategory = 'Normal weight';
-      } else if (_bmiResult >= 25 && _bmiResult < 30) {
-        _bmiCategory = 'Overweight';
+        _bmiCategory = 'Normal';
       } else {
-        _bmiCategory = 'Obese';
+        _bmiCategory = 'Overweight';
       }
     });
   }
@@ -44,7 +38,7 @@ class _BMICalculatorState extends State<BMICalculator> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI Calculator'),
+        title: Text('BMI'),
       ),
       body: Center(
         child: Container(
@@ -52,29 +46,8 @@ class _BMICalculatorState extends State<BMICalculator> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(widget.email),
-              //menampilkan alamat
-              Text(widget.password),
-              TextField(
-                controller: _heightController,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: 'Height (cm)',
-                ),
-              ),
-              SizedBox(height: 20),
-              TextField(
-                controller: _weightController,
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: 'Weight (kg)',
-                ),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _calculateBMI,
-                child: Text('Calculate BMI'),
-              ),
+              Text('{ ${widget.username} }'),
+              //Text(widget.password),
               SizedBox(height: 20),
               Text(
                 'BMI: ${_bmiResult.toStringAsFixed(1)}',
@@ -82,6 +55,26 @@ class _BMICalculatorState extends State<BMICalculator> {
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
+              ),
+              TextField(
+                controller: _heightController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: 'Tinggi (cm)',
+                ),
+              ),
+              SizedBox(height: 20),
+              TextField(
+                controller: _weightController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: 'Berat Bad an (kg)',
+                ),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _calculateBMI,
+                child: Text('Hitung BMI'),
               ),
               SizedBox(height: 20),
               Text(

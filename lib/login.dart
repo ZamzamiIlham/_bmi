@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
-  final String email;
+  final String username;
   final String password;
 
-  LoginPage({required this.email, required this.password});
+  LoginPage({required this.username, required this.password});
 
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    _emailController.text = widget.email;
+    _usernameController.text = widget.username;
     _passwordController.text = widget.password;
   }
 
@@ -33,8 +33,18 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'Halaman Login',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
             TextField(
-              controller: _emailController,
+              controller: _usernameController,
               decoration: InputDecoration(
                 labelText: 'Email',
                 border: OutlineInputBorder(),
@@ -51,13 +61,13 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                if (_emailController.text == widget.email &&
+                if (_usernameController.text == widget.username &&
                     _passwordController.text == widget.password) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => BMICalculator(
-                              email: _emailController.text,
+                              username: _usernameController.text,
                               password: _passwordController.text,
                             )),
                   );
@@ -66,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                     context: context,
                     builder: (context) => AlertDialog(
                       title: Text('Error'),
-                      content: Text('Invalid email or password'),
+                      content: Text('Pasword dan email salah'),
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
@@ -77,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                   );
                 }
               },
-              child: Text('Login'),
+              child: Text('Logon'),
             ),
           ],
         ),
