@@ -7,43 +7,71 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
+  final Color primaryColor = Color(0xff18203d);
+  final Color secondaryColor = Color(0xff232c51);
+
+  final Color logoGreen = Color(0xff25bcbb);
+
+  //////////////////////////////////////
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign Up'),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
+      backgroundColor: primaryColor,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Container(
+              height: 250,
+              child: Image.asset('assets/images/sign.png'),
+            ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(bottom: 20),
               child: Text(
                 'Halaman Sign',
                 style: TextStyle(
+                  color: Colors.white,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             TextField(
+              style: TextStyle(color: Colors.white),
               controller: _usernameController,
               decoration: InputDecoration(
-                labelText: 'Username',
-                border: OutlineInputBorder(),
-              ),
+                  fillColor: logoGreen,
+                  labelText: 'Username',
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: logoGreen,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: logoGreen)),
+                  labelStyle: new TextStyle(color: logoGreen)),
             ),
             SizedBox(height: 16.0),
             TextField(
+              style: TextStyle(color: Colors.white),
               controller: _passwordController,
               decoration: InputDecoration(
-                labelText: 'Password',
-                border: OutlineInputBorder(),
-              ),
+                  labelText: 'Password',
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: logoGreen,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: logoGreen)),
+                  labelStyle: new TextStyle(color: logoGreen)),
             ),
             SizedBox(height: 16.0),
             ElevatedButton(

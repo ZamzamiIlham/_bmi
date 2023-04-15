@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
+  ////////////////////////////////////////
   final String username;
   final String password;
-
+  /////////////////////////////////////////
   LoginPage({required this.username, required this.password});
 
   @override
@@ -12,6 +13,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final Color primaryColor = Color(0xff18203d);
+  final Color secondaryColor = Color(0xff232c51);
+
+  final Color logoGreen = Color(0xff25bcbb);
+  /////////////////////////////////////////////
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -27,36 +33,53 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Login'),
+        backgroundColor: secondaryColor,
+        elevation: 0,
       ),
+      backgroundColor: primaryColor,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(bottom: 20),
               child: Text(
                 'Halaman Login',
                 style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
             ),
             TextField(
+              style: TextStyle(color: Colors.white),
               controller: _usernameController,
               decoration: InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
-              ),
+                  labelText: 'Email',
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: logoGreen,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: logoGreen)),
+                  labelStyle: new TextStyle(color: logoGreen)),
             ),
             SizedBox(height: 16.0),
             TextField(
+              style: TextStyle(color: Colors.white),
               controller: _passwordController,
               decoration: InputDecoration(
-                labelText: 'Password',
-                border: OutlineInputBorder(),
-              ),
+                  labelText: 'Password',
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: logoGreen,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: logoGreen)),
+                  labelStyle: new TextStyle(color: logoGreen)),
             ),
             SizedBox(height: 16.0),
             ElevatedButton(
