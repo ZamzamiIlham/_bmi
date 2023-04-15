@@ -28,19 +28,22 @@ class _SignupPageState extends State<SignupPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              height: 250,
-              child: Image.asset('assets/images/sign.png'),
-            ),
             Padding(
               padding: const EdgeInsets.only(bottom: 20),
               child: Text(
-                'Halaman Sign',
+                'Silahkan mendaftar terlebih dahulu',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  fontWeight: FontWeight.normal,
                 ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 40),
+              child: Container(
+                height: 250,
+                child: Image.asset('assets/images/signup.png'),
               ),
             ),
             TextField(

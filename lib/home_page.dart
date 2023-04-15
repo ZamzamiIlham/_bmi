@@ -11,6 +11,11 @@ class BMICalculator extends StatefulWidget {
 }
 
 class _BMICalculatorState extends State<BMICalculator> {
+  final Color primaryColor = Color(0xff18203d);
+  final Color secondaryColor = Color(0xff232c51);
+
+  final Color logoGreen = Color(0xff25bcbb);
+  /////////////////////////////////////
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _heightController = TextEditingController();
@@ -25,11 +30,11 @@ class _BMICalculatorState extends State<BMICalculator> {
     setState(() {
       _bmiResult = bmi;
       if (_bmiResult < 18.5) {
-        _bmiCategory = 'Kurus';
+        _bmiCategory = 'KURUS';
       } else if (_bmiResult >= 18.5 && _bmiResult < 25) {
-        _bmiCategory = 'Normal';
+        _bmiCategory = 'NORMAL';
       } else {
-        _bmiCategory = 'Overweight';
+        _bmiCategory = 'OVERWEIGHT';
       }
     });
   }
@@ -39,47 +44,72 @@ class _BMICalculatorState extends State<BMICalculator> {
     return Scaffold(
       appBar: AppBar(
         title: Text('BMI'),
+        backgroundColor: secondaryColor,
+        elevation: 0,
       ),
+      backgroundColor: primaryColor,
       body: Center(
         child: Container(
           padding: EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text('{ ${widget.username} }'),
-              //Text(widget.password),
+              Text(
+                '{ ${widget.username} }',
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
               SizedBox(height: 20),
               Text(
                 'BMI: ${_bmiResult.toStringAsFixed(1)}',
                 style: TextStyle(
+                  color: Colors.white,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              SizedBox(height: 20),
               TextField(
+                style: TextStyle(color: Colors.white),
                 controller: _heightController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  labelText: 'Tinggi (cm)',
-                ),
+                    labelText: 'Tinggi (cm)',
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: logoGreen,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: logoGreen)),
+                    labelStyle: new TextStyle(color: logoGreen)),
               ),
               SizedBox(height: 20),
               TextField(
+                style: TextStyle(color: Colors.white),
                 controller: _weightController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
-                  labelText: 'Berat Bad an (kg)',
-                ),
+                    labelText: 'Berat Badan (kg)',
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: logoGreen,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: logoGreen)),
+                    labelStyle: new TextStyle(color: logoGreen)),
               ),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _calculateBMI,
-                child: Text('Hitung BMI'),
+                child:
+                    Text('HITUNG BMI', style: TextStyle(color: Colors.white)),
               ),
               SizedBox(height: 20),
               Text(
-                'Category: $_bmiCategory',
+                'CATEGORY : $_bmiCategory',
                 style: TextStyle(
+                  color: Colors.white,
                   fontSize: 18,
                 ),
               ),

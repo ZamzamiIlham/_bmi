@@ -42,14 +42,25 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              'Aplikasi BMI',
+              style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.white),
+            ),
+            Text(
+              'Login untuk menggunakan BMI',
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.white),
+            ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: Text(
-                'Halaman Login',
-                style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+              padding: const EdgeInsets.only(top: 20, bottom: 10),
+              child: Container(
+                height: 250,
+                child: Image.asset('assets/images/login.png'),
               ),
             ),
             TextField(
@@ -110,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                   );
                 }
               },
-              child: Text('Logon'),
+              child: Text('Login'),
             ),
           ],
         ),
